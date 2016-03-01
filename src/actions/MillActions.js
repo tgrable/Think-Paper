@@ -2,19 +2,15 @@ import alt from '../alt';
 import MillSource from '../sources/MillSource';
 
 class MillActions {
-    updateMills(mills) {
-        return mills;
+    updateMills(res) {
+        return res.data.data.mill;
     }
 
-    dataFailed(errorMessage) {
-        return errorMessage;
-    }
+   updateMill(key){
+       return key;
+   }
 
-    loadingMills() {
-        return;
-    }
-
-    fetchData() {
+    /*fetchData() {
         return (dispatch) => {
             dispatch()
             MillSource.fetchData()
@@ -25,7 +21,7 @@ class MillActions {
                    this.dataFailed(errorMessage);
                 });
         }
-    }
+    }*/
 }
 
 export default alt.createActions(MillActions);

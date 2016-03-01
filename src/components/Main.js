@@ -9,7 +9,10 @@ export default React.createClass({
                     <div className="col-md-12">
                         <ul className="nav nav-pills">
                             <li className="active">
-                                <Link to="/mills">Mills</Link>
+                                <Link to="/">Mills</Link>
+                            </li>
+                            <li className="">
+                                <Link to="/papers">Papers</Link>
                             </li>
                         </ul>
 

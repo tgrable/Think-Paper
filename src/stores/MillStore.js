@@ -2,29 +2,36 @@ import alt from '../alt';
 import MillActions from '../actions/MillActions';
 import MillSource from '../sources/MillSource';
 
+import find from 'lodash/find';
+
 class MillStore {
     constructor() {
         this.mills = [];
+        this.currentMill = {};
 
         this.bindListeners({
             handleUpdateMills: MillActions.UPDATE_MILLS,
-            handleFetchData: MillActions.FETCH_DATA,
-            handleDataFailed: MillActions.DATA_FAILED
+            handleUpdateMill: MillActions.UPDATE_MILL
         });
 
     }
 
-    handleDataFailed(message) {
-
-    }
-
-    handleFetchData() {
-        //TODO handle loading state
-    }
-
     handleUpdateMills(mills) {
-        console.log(mills);
         this.mills = mills;
+    }
+
+    handleUpdateMill(key) {
+        this.currentMill = find(this.mills, (item) => {
+            return item.key === key;
+        });
+    }
+
+    static getMill(key) {
+        let mill = find(this.getState().mills, (item) => {
+            console.log(item.key);
+            return item.key === key;
+        });
+        return mill;
     }
 }
 
