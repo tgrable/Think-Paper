@@ -8,7 +8,7 @@ export default class MillGridItem extends React.Component {
 
     render() {
         return (
-            <div className="col-md-3">
+            <div className="col-xs-6 col-md-3">
                 <Link to={ '/mill/'+this.props.mill.key}>
                     <div className="grid-item">
                         <h3>{this.props.mill.title}</h3>

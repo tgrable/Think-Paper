@@ -11,11 +11,12 @@ import Main from "./components/Main";
 import Mills from "./components/Mills";
 import Mill from "./components/Mill";
 import Papers from "./components/Papers";
+import Paper from "./components/Paper";
 
 import PaperActions from './actions/PaperActions';
 import MillActions from './actions/MillActions';
 
-require('./css/app.css');
+require('./sass/app.scss');
 
 axios.all([getMills(), getPapers()])
     .then(axios.spread((millRes, paperRes) => {
@@ -28,6 +29,7 @@ axios.all([getMills(), getPapers()])
                     <IndexRoute component={Mills}/>
                     <Route path="/papers" component={Papers}/>
                     <Route path="/mill/:key" component={Mill}/>
+                    <Route path="/paper/:key" component={Paper}/>
                 </Route>
             </Router>,
             document.getElementById('app')

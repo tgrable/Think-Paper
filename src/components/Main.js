@@ -8,10 +8,10 @@ export default React.createClass({
                 <div className="row">
                     <div className="col-md-12">
                         <ul className="nav nav-pills">
-                            <li className="active">
+                            <li>
                                 <Link to="/">Mills</Link>
                             </li>
-                            <li className="">
+                            <li>
                                 <Link to="/papers">Papers</Link>
                             </li>
                         </ul>
@@ -19,7 +19,9 @@ export default React.createClass({
                     </div>
                 </div>
                 <div className="row">
-                    {this.props.children}
+                    <div className="col-md-12">
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         );

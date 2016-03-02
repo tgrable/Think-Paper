@@ -16,10 +16,6 @@ const Paper = React.createClass({
         }
     },
 
-    _onClick() {
-       PaperActions.filterData('georgia-pacific--mill');
-    },
-
     render() {
         /*let { query } = this.props.location;
         let data = [];
@@ -32,11 +28,9 @@ const Paper = React.createClass({
         }*/
 
         return (
-            <div className="container">
+            <div className="">
                 <div>something about papers</div>
-                <div>area for filters</div>
-                <button onClick={this._onClick}>Click me</button>
-                <PaperTable location={this.props.location} papers={this.props.viewData} />
+                <PaperTable location={this.props.location} papers={this.props.viewData}/>
             </div>
         )
     }

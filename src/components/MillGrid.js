@@ -4,7 +4,7 @@
 import React from "react";
 import chunk from "lodash/chunk";
 
-import Mill from "./MillGridItem";
+import MillGridItem from "./MillGridItem";
 
 
 export default class MillGrid extends React.Component {
@@ -22,21 +22,17 @@ export default class MillGrid extends React.Component {
             return <span>loading</span>;
         }
 
-        /*let chunks = chunk(this.props.mills, 4);
-
-        let rows = [];
-
-        chunks.forEach((chunk) => {
-            console.log(chunk);
-        });*/
 
         let mills = this.props.mills.map((item) => {
-            return <Mill key={item.key} mill={item}/>;
+            return <MillGridItem key={item.key} mill={item}/>;
         });
 
         return (
             <div>
-                {mills}
+                <h1>Mills</h1>
+                <div className="row">
+                    {mills}
+                </div>
             </div>
         )
     }
