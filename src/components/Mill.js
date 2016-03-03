@@ -1,22 +1,10 @@
 import React from "react";
-import connectToStores from 'alt-utils/lib/connectToStores';
 import MillStore from '../stores/MillStore';
 import PaperStore from '../stores/PaperStore';
-import MillActions from "../actions/MillActions";
 
 import PaperTable from './PaperTable';
 
 const Mill = React.createClass({
-    statics: {
-        getStores(props) {
-            return [MillStore]
-        },
-        getPropsFromStores(props) {
-            return MillStore.getState()
-        }
-    },
-
-
     render() {
         let {params} = this.props;
         let mill = MillStore.getMill(params.key);
@@ -44,4 +32,4 @@ const Mill = React.createClass({
     }
 })
 
-export default connectToStores(Mill);
+export default Mill;

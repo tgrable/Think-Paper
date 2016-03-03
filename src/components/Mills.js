@@ -1,18 +1,25 @@
 import React from "react";
-
-import AltContainer from 'alt-container';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
 import MillStore from '../stores/MillStore';
-import MillActions from "../actions/MillActions";
 
 import MillGrid from "./MillGrid";
 
-export default React.createClass({
+const Mills = React.createClass({
+    statics: {
+        getStores(props) {
+            return [MillStore]
+        },
+        getPropsFromStores(props) {
+            return MillStore.getState()
+        }
+    },
+
     render() {
         return (
-            <AltContainer store={MillStore} actions={MillActions}>
-                <MillGrid />
-            </AltContainer>
+            <MillGrid mills={this.props.mills} />
         )
     }
 });
+
+export default connectToStores(Mills);

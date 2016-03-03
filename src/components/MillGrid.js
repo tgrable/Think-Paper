@@ -10,7 +10,6 @@ import MillGridItem from "./MillGridItem";
 export default class MillGrid extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this);
     }
 
     componentDidMount() {
