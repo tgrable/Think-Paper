@@ -12,6 +12,6 @@
 
 ### Scripts ###
 
-npm run build (builds dev bundle)
-npm run prod (builds prod bundle)
-npm start (starts webpack-dev-server)
+* npm run build (builds dev bundle)
+* npm run prod (builds prod bundle)
+* npm start (starts webpack-dev-server)
