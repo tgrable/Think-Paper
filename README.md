@@ -10,7 +10,7 @@
 * navigate to root
 * npm install
 
-3 scripts in package.json
+### Scripts ###
 
 npm run build (builds dev bundle)
 npm run prod (builds prod bundle)
