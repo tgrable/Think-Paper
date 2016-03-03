@@ -31,7 +31,6 @@ export default class PaperTable extends React.Component {
 
     _doFilter(query, id) {
         this.filteringBy[id] = query;
-        console.log(this.filteringBy);
         const papers = filter(this.props.papers, function(item) {
             let matches = [];
 
@@ -47,34 +46,6 @@ export default class PaperTable extends React.Component {
         this.setState({
             papers: papers
         })
-
-        /*const isDefault = query === 'default';
-
-        switch (id) {
-            case 'categories':
-                if (isDefault) {
-                    this._removeFilter(id);
-                } else {
-                    this.filteringBy.push(id);
-                }
-                break;
-            case 'coatings'
-        }
-
-
-        if (isDefault) {
-            const papers = filter(this.props.papers, (item) => {
-                return item.category == query;
-            });
-            this.setState({
-                papers: papers
-            })
-        } else {
-            this.setState({
-                papers: this.props.papers
-            })
-        }*/
-
     }
 
     _reset() {

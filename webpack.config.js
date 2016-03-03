@@ -35,12 +35,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Think Paper-Mill',
             template: 'index.ejs',
-        }),
-       /* new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        })*/
+        })
     ],
 
     devtool: 'source-map'

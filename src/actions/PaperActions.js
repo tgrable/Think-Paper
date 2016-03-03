@@ -4,8 +4,8 @@ let cache = felix.create("pm");
 import PaperSource from '../sources/PaperSource';
 
 class PaperActions {
-    updatePapers(res) {
-        return res.data.data.paper;
+    updatePapers(papers) {
+        return papers;
     }
 
     dataFailed(errorMessage) {

@@ -3,16 +3,19 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 
 import map from 'lodash/map';
 
+import RadioGroup from 'react-radio-group';
 import PaperStore from '../stores/PaperStore';
 import PaperActions from "../actions/PaperActions";
 import Dropdown from './Dropdown';
+import ColorRow from './ColorRow';
 
 class Filters extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             category: 'default',
-            coating: 'default'
+            coating: 'default',
+            color: 'default'
         }
     }
 
@@ -36,6 +39,13 @@ class Filters extends React.Component {
         this.setState({
             [event.target.id]: event.target.value
         });
+    }
+
+    _onColorChange(value) {
+        this.props.doFilter(value, 'color_capability');
+        this.setState({
+            color: value
+        })
     }
 
     _buildOption(filter) {
@@ -71,6 +81,47 @@ class Filters extends React.Component {
                           id="dye_pigment"
                           defaultText="All"
                           label="Inkset"/>
+
+                <RadioGroup
+                    name="colors"
+                    selectedValue={this.state.color}
+                    onChange={this._onColorChange.bind(this)}>
+                    {Radio => (
+                        <div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="default"/> All
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="1"/> <ColorRow count={1}/>
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="2"/> <ColorRow count={2}/>
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="3"/> <ColorRow count={3}/>
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="4"/> <ColorRow count={4}/>
+                                </label>
+                            </div>
+                            <div className="radio">
+                                <label>
+                                    <Radio value="5"/> <ColorRow count={5}/>
+                                </label>
+                            </div>
+                        </div>
+                    )}
+
+                </RadioGroup>
 
                 <button onClick={this._reset.bind(this)}>Reset</button>
             </div>

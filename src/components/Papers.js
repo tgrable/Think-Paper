@@ -17,18 +17,9 @@ const Paper = React.createClass({
     },
 
     render() {
-        /*let { query } = this.props.location;
-        let data = [];
-        if (Object.keys(query).length) {
-            data = filter(this.props.viewData, (item) => {
-                return item.mill == query.mill;
-            });
-        } else {
-            data = this.props.viewData;
-        }*/
-
         return (
             <div className="">
+                <h2>Papers</h2>
                 <div>something about papers</div>
                 <PaperTable location={this.props.location} papers={this.props.viewData}/>
             </div>

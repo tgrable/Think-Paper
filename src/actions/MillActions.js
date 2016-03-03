@@ -2,8 +2,8 @@ import alt from '../alt';
 import MillSource from '../sources/MillSource';
 
 class MillActions {
-    updateMills(res) {
-        return res.data.data.mill;
+    updateMills(mills) {
+        return mills;
     }
 
    updateMill(key){

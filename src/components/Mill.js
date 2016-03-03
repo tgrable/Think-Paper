@@ -26,9 +26,14 @@ const Mill = React.createClass({
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <h2>
+                        <div className="mill-logo">
+                            <img src={mill.logo} alt=""/>
+                        </div>
+                        <h1>
                             {mill.title}
-                        </h2>
+                        </h1>
+                        <p><a href={mill.website}>Website</a></p>
+                        <p>{mill.address}</p>
                         <p>{mill.description}</p>
                         <PaperTable papers={papers}/>
                     </div>
