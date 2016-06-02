@@ -57,11 +57,11 @@ const PaperSource = {
     },
 
     getMills() {
-        return axios.get('http://dev-pressdemo.pantheon.io/data/api/mill');
+        return axios.get('http://dev-pressdemo.pantheonsite.io/data/api/mill');
     },
 
     getPapers() {
-        return axios.get('http://dev-pressdemo.pantheon.io/data/api/paper');
+        return axios.get('http://dev-pressdemo.pantheonsite.io/data/api/paper');
     }
 }
 

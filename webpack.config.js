@@ -35,6 +35,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Think Paper-Mill',
             template: 'index.ejs',
+            hash: true
         })
     ],
 
