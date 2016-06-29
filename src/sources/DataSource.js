@@ -6,7 +6,7 @@ import MillActions from '../actions/MillActions';
 
 const cacheTime = 900000; // 15 mins
 
-const PaperSource = {
+const DataSource = {
     fetchData(callback) {
         const hasCache = this.checkCache();
         if (!hasCache) {
@@ -65,4 +65,4 @@ const PaperSource = {
     }
 }
 
-export default PaperSource;
+export default DataSource;

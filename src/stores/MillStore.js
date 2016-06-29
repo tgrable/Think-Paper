@@ -1,6 +1,5 @@
 import alt from '../alt';
 import MillActions from '../actions/MillActions';
-import MillSource from '../sources/MillSource';
 
 import find from 'lodash/find';
 

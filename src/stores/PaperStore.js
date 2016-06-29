@@ -1,6 +1,5 @@
 import alt from '../alt';
 import PaperActions from '../actions/PaperActions';
-import PaperSource from '../sources/PaperSource';
 
 import filter from 'lodash/filter';
 import sortBy from 'lodash/sortBy';
