@@ -18,9 +18,13 @@ export default class PaperTable extends React.Component {
 
         this.filteringBy = {};
     }
+    
+    // componentDidMount() {
+    //     console.log('componentDidMount');
+    // }
 
-    componentDidMount() {
-
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps: ', nextProps);
     }
 
     _removeFilter(id) {
@@ -30,18 +34,42 @@ export default class PaperTable extends React.Component {
     }
 
     _doFilter(query, id) {
+        
+        console.log(this.filteringBy);
+
         this.filteringBy[id] = query;
         const papers = filter(this.props.papers, function(item) {
             let matches = [];
 
             forIn(this.filteringBy, function(value, key) {
                 if (value !== 'default') {
-                    matches.push(item[key] == value);
+                    // basis_weight is the text field search
+                    // all others are the select option filtering 
+                    if (id == 'basis_weight') {
+                        var temp = item[key];
+                        var tempString = '';
+
+                        for (var i = 0; i < temp.length; i++) {
+                            tempString += temp[i];                            
+                        }
+
+                        if (tempString.search(value) !== -1) {
+                            matches.push(true);
+                        }
+                        else {   
+                            matches.push(false);
+                        }
+                    }
+                    else {
+                        matches.push(item[key] == value);
+                    }             
                 }
             });
 
             return !includes(matches, false);
         }.bind(this));
+        
+        console.log("_doFilter: ", papers);
 
         this.setState({
             papers: papers
@@ -55,6 +83,8 @@ export default class PaperTable extends React.Component {
     }
 
     render() {
+        console.log("render: ", this.state.papers);
+
         let rows = this.state.papers.map((paper) => {
             return <PaperRow key={paper.key} item={paper}/>
         });
@@ -79,9 +109,6 @@ export default class PaperTable extends React.Component {
                     </tbody>
                 </table>
             </div>
-
         )
-
     }
-
 }

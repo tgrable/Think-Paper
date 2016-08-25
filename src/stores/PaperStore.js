@@ -16,7 +16,8 @@ class PaperStore {
         this.filters = {
             category: [],
             coating: [],
-            dye_pigment: []
+            dye_pigment: [],
+            basis_weight: []
         };
 
         this.bindListeners({
