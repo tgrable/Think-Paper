@@ -40,8 +40,7 @@ export default class PaperTable extends React.Component {
             let matches = [];
 
             forIn(this.filteringBy, function(value, key) {
-                console.log('key: ', key);
-
+                
                 if (value !== 'default') {
                     if (key == 'basis_weight') {
 
