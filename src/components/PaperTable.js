@@ -34,18 +34,17 @@ export default class PaperTable extends React.Component {
     }
 
     _doFilter(query, id) {
-        
-        console.log(this.filteringBy);
-
         this.filteringBy[id] = query;
+
         const papers = filter(this.props.papers, function(item) {
             let matches = [];
 
             forIn(this.filteringBy, function(value, key) {
+                console.log('key: ', key);
+
                 if (value !== 'default') {
-                    // basis_weight is the text field search
-                    // all others are the select option filtering 
-                    if (id == 'basis_weight') {
+                    if (key == 'basis_weight') {
+
                         var temp = item[key];
                         var tempString = '';
 
@@ -59,6 +58,7 @@ export default class PaperTable extends React.Component {
                         else {   
                             matches.push(false);
                         }
+
                     }
                     else {
                         matches.push(item[key] == value);
@@ -68,8 +68,6 @@ export default class PaperTable extends React.Component {
 
             return !includes(matches, false);
         }.bind(this));
-        
-        console.log("_doFilter: ", papers);
 
         this.setState({
             papers: papers
@@ -83,8 +81,6 @@ export default class PaperTable extends React.Component {
     }
 
     render() {
-        console.log("render: ", this.state.papers);
-
         let rows = this.state.papers.map((paper) => {
             return <PaperRow key={paper.key} item={paper}/>
         });
