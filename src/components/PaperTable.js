@@ -28,6 +28,7 @@ export default class PaperTable extends React.Component {
     }
 
     _removeFilter(id) {
+        console.log("_removeFilter: ", id);
         this.filteringBy = remove(this.filteringBy, (item) => {
             return item === id;
         });
@@ -40,7 +41,7 @@ export default class PaperTable extends React.Component {
             let matches = [];
 
             forIn(this.filteringBy, function(value, key) {
-                
+
                 if (value !== 'default') {
                     if (key == 'basis_weight') {
 

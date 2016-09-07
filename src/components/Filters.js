@@ -14,6 +14,7 @@ class Filters extends React.Component {
         super(props);
         this.state = {
             category: 'default',
+            dye_pigment: 'default',
             coating: 'default',
             color: 'default',
             basis_weight: 'default'
@@ -29,9 +30,15 @@ class Filters extends React.Component {
     }
 
     _reset() {
+        this.refs.basis_weight.value = '';
+
         this.props.reset();
         this.setState({
-            category: 'default'
+            category: 'default',
+            dye_pigment: 'default',
+            coating: 'default',
+            color: 'default',
+            basis_weight: 'default'
         });
     }
 
@@ -87,6 +94,7 @@ class Filters extends React.Component {
                 <label>Weight: </label>
                 <input
                     type="text"
+                    ref='basis_weight'
                     value={this.state.value}
                     onChange={this._onFilter.bind(this)}
                     id="basis_weight"
@@ -136,9 +144,7 @@ class Filters extends React.Component {
                 <button onClick={this._reset.bind(this)}>Reset</button>
             </div>
         )
-
     }
-
 }
 
 export default connectToStores(Filters);
