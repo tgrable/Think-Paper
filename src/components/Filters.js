@@ -14,8 +14,10 @@ class Filters extends React.Component {
         super(props);
         this.state = {
             category: 'default',
+            dye_pigment: 'default',
             coating: 'default',
-            color: 'default'
+            color: 'default',
+            basis_weight: 'default'
         }
     }
 
@@ -28,17 +30,23 @@ class Filters extends React.Component {
     }
 
     _reset() {
+        this.refs.basis_weight.value = '';
+
         this.props.reset();
         this.setState({
-            category: 'default'
+            category: 'default',
+            dye_pigment: 'default',
+            coating: 'default',
+            color: 'default',
+            basis_weight: 'default'
         });
     }
 
     _onFilter(event) {
-        this.props.doFilter(event.target.value, event.target.id);
-        this.setState({
-            [event.target.id]: event.target.value
-        });
+      this.props.doFilter(event.target.value, event.target.id);
+      this.setState({
+        [event.target.id]: event.target.value
+      });
     }
 
     _onColorChange(value) {
@@ -49,13 +57,14 @@ class Filters extends React.Component {
     }
 
     _buildOption(filter) {
-        return map(filter, (item)=> {
-            return {value: item, label: item}
-        });
+      // console.log(filter);
+      return map(filter, (item)=> {
+        return {value: item, label: item}
+      });
     }
 
     render() {
-        console.log(this.state.category);
+        // console.log(this.state.category);
         return (
             <div>
                 <Dropdown options={this._buildOption(this.props.filters.category)}
@@ -81,6 +90,15 @@ class Filters extends React.Component {
                           id="dye_pigment"
                           defaultText="All"
                           label="Inkset"/>
+
+                <label>Weight: </label>
+                <input
+                    type="text"
+                    ref='basis_weight'
+                    value={this.state.value}
+                    onChange={this._onFilter.bind(this)}
+                    id="basis_weight"
+                    label="Weight" />
 
                 <RadioGroup
                     name="colors"
@@ -126,9 +144,7 @@ class Filters extends React.Component {
                 <button onClick={this._reset.bind(this)}>Reset</button>
             </div>
         )
-
     }
-
 }
 
 export default connectToStores(Filters);

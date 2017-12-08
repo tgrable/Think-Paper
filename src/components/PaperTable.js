@@ -18,12 +18,17 @@ export default class PaperTable extends React.Component {
 
         this.filteringBy = {};
     }
+    
+    // componentDidMount() {
+    //     console.log('componentDidMount');
+    // }
 
-    componentDidMount() {
-
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps: ', nextProps);
     }
 
     _removeFilter(id) {
+        console.log("_removeFilter: ", id);
         this.filteringBy = remove(this.filteringBy, (item) => {
             return item === id;
         });
@@ -31,12 +36,33 @@ export default class PaperTable extends React.Component {
 
     _doFilter(query, id) {
         this.filteringBy[id] = query;
+
         const papers = filter(this.props.papers, function(item) {
             let matches = [];
 
             forIn(this.filteringBy, function(value, key) {
+
                 if (value !== 'default') {
-                    matches.push(item[key] == value);
+                    if (key == 'basis_weight') {
+
+                        var temp = item[key];
+                        var tempString = '';
+
+                        for (var i = 0; i < temp.length; i++) {
+                            tempString += temp[i];                            
+                        }
+
+                        if (tempString.search(value) !== -1) {
+                            matches.push(true);
+                        }
+                        else {   
+                            matches.push(false);
+                        }
+
+                    }
+                    else {
+                        matches.push(item[key] == value);
+                    }             
                 }
             });
 
@@ -79,9 +105,6 @@ export default class PaperTable extends React.Component {
                     </tbody>
                 </table>
             </div>
-
         )
-
     }
-
 }
